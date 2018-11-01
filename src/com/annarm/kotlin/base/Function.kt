@@ -1,7 +1,8 @@
 package com.annarm.kotlin.base
 
-import java.lang.Integer.parseInt
-
+/**
+ * 基本语法
+ */
 class Function{
     /**
      * 函数定义使用关键字 fun，参数格式为：参数 : 类型
@@ -97,6 +98,8 @@ class Function{
 
     /**
      * 类型转换
+     * obj is String
+     * obj !is String
      */
     fun getStringLength(obj: Any): Int? {
         // 在 `&&` 运算符的右侧, `obj` 的类型会被自动转换为 `String`

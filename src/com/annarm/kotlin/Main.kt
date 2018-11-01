@@ -1,9 +1,11 @@
 package com.annarm.kotlin
 
+import com.annarm.kotlin.base.DataType
 import com.annarm.kotlin.base.Function
 
 fun main(args: Array<String>) {
-    testBaseFunction();
+//    testBaseFunction();
+    testDataType();
 }
 
 /**
@@ -21,6 +23,14 @@ fun testBaseFunction() {
     f.emptyValid("27")
     println("type function=> "+ f.getStringLength("mark"))
     f.testRange()
+}
+
+fun testDataType(){
+    val dataType = DataType()
+    dataType.compare()
+    dataType.testArray()
+    dataType.testString("kotlin")
+    dataType.testTemplate()
 }
 
 fun testA(){
