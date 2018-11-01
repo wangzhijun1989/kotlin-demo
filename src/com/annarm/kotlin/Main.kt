@@ -2,12 +2,16 @@ package com.annarm.kotlin
 
 import com.annarm.kotlin.base.DataType
 import com.annarm.kotlin.base.Function
+import com.annarm.kotlin.cycle.Cycle
+import com.annarm.kotlin.entity.Person
 import java.util.concurrent.locks.Condition
 
 fun main(args: Array<String>) {
 //    testBaseFunction()
 //    testDataType()
-    testCondition()
+//    testCondition()
+//    testCycle()
+    testEntity();
 }
 
 /**
@@ -42,6 +46,27 @@ fun testCondition(){
     condition.testWhen()
     println("hasPrefix by 1 " + condition.hasPrefix("1"))
     println("hasPrefix by prefix " + condition.hasPrefix("prefix"))
+}
+
+fun testCycle(){
+    val cycle = Cycle()
+    cycle.common()
+    cycle.testOver()
+    cycle.testReturn()
+}
+
+fun testEntity(){
+    val person = Person("David")
+    person.address = "sh=y"
+    println(person.address)
+    person.sex = 5
+    println(person.sex)
+    person.age = 166
+    println(person.age)
+
+    val personLi = Person("Li", 30)
+    println(personLi.age)
+
 }
 
 fun testA(){

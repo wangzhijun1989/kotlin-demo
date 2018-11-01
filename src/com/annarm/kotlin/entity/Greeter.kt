@@ -2,7 +2,7 @@ package com.annarm.kotlin.entity
 
 import com.annarm.kotlin.testA
 
-class Greeter(val name:String){
+open class Greeter(private val name:String){
 
     fun greet(){
         println("Hello, $name")
