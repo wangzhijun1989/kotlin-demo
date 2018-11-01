@@ -2,10 +2,12 @@ package com.annarm.kotlin
 
 import com.annarm.kotlin.base.DataType
 import com.annarm.kotlin.base.Function
+import java.util.concurrent.locks.Condition
 
 fun main(args: Array<String>) {
-//    testBaseFunction();
-    testDataType();
+//    testBaseFunction()
+//    testDataType()
+    testCondition()
 }
 
 /**
@@ -31,6 +33,15 @@ fun testDataType(){
     dataType.testArray()
     dataType.testString("kotlin")
     dataType.testTemplate()
+}
+
+fun testCondition(){
+    val condition = com.annarm.kotlin.condition.Condition()
+    condition.common()
+    condition.assignment()
+    condition.testWhen()
+    println("hasPrefix by 1 " + condition.hasPrefix("1"))
+    println("hasPrefix by prefix " + condition.hasPrefix("prefix"))
 }
 
 fun testA(){
