@@ -58,8 +58,13 @@ class Teacher : Person{
     }
 }
 
+fun Teacher.print(){
+    print(age)
+}
+
 fun main(args: Array<String>) {
     val teacher:Teacher = Teacher("zz", 299)
+
     val student:Student = Student("ming", 299, "0221", 87)
     teacher.job();
     println("teacher job end")
@@ -70,4 +75,7 @@ fun main(args: Array<String>) {
     student.age = 299
     println(student.age)
     println(teacher.age)
+
+    println("拓展")
+    teacher.print()
 }
