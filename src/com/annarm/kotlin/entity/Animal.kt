@@ -1,7 +1,7 @@
 package com.annarm.kotlin.entity
 
-open class Animal{
-    open fun live(){}
+abstract class Animal{
+    abstract fun live()
 }
 
 abstract class Cat : Animal(){

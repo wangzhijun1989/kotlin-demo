@@ -1,6 +1,9 @@
 package com.annarm.kotlin.entity
 
-class Person constructor(private var name:String){
+/**
+ * 类继承
+ */
+open class Person constructor(protected var name:String){
 
     constructor(name: String, sex:Int): this(name){
         this.sex = sex
@@ -16,9 +19,9 @@ class Person constructor(private var name:String){
 
     var address:String = "addr"
 
-    var age:Int = 20
-    set(value) {
-        field = if (value > 150) 150 else value
+    open var age:Int = 20
+    set(v) {
+        field = if (v > 150) 150 else v
     }
     get() {
         return ++field
@@ -29,4 +32,42 @@ class Person constructor(private var name:String){
     init {
         println("person init $name")
     }
+
+    open fun job(){
+        println("no target")
+    }
+}
+
+class Student(name : String, age : Int, var no : String, var score : Int) : Person(name){
+    override fun job(){
+        println("study")
+    }
+}
+
+class Teacher : Person{
+
+    override var age: Int = 1
+
+    constructor(name:String, age:Int):super(name){
+        println("age: " + age)
+    }
+
+    override fun job() {
+        super.job()
+        println("make course")
+    }
+}
+
+fun main(args: Array<String>) {
+    val teacher:Teacher = Teacher("zz", 299)
+    val student:Student = Student("ming", 299, "0221", 87)
+    teacher.job();
+    println("teacher job end")
+    student.job()
+    println("student job end")
+
+    teacher.age = 299;
+    student.age = 299
+    println(student.age)
+    println(teacher.age)
 }

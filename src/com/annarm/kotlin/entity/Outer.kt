@@ -6,9 +6,13 @@ class Outer {                  // 外部类
 
     class Nested {             // 嵌套类
         fun foo() = 2
+        fun getBar() :Int{
+            val barObj = Outer();
+            return barObj.bar
+        }
     }
 
-    inner class Inner {
+    inner class Inner {         //内部类
         fun foo() = bar  // 访问外部类成员
         fun innerTest() {
             var o = this@Outer //获取外部类的成员变量
