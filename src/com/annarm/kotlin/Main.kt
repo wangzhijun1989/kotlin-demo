@@ -11,8 +11,8 @@ fun main(args: Array<String>) {
 //    testDataType()
 //    testCondition()
 //    testCycle()
-//    testEntity();
-    testObject()
+    testEntity();
+//    testObject()
 }
 
 /**
