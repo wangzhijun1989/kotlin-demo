@@ -42,8 +42,13 @@ class Function{
      * lambda
      */
     fun testLambda() {
-        val sumLambda:(Int, Int) -> Int = {x,y ->x+y}
+        val sumLambda:(Int, Int) -> String = {x,y ->"kotlin $x + $y = ".plus(x + y)}
         println(sumLambda(1, 2))
+    }
+
+    fun testLambdaPlus(){
+        val sumLambda = {x:Int, y:Int -> x+y}
+        println(sumLambda(3, 2))
     }
 
     /**
@@ -51,6 +56,7 @@ class Function{
      */
     fun testVar(){
         var value :Int = 5;
+        value = 8;
         println(value)
     }
 
@@ -59,6 +65,7 @@ class Function{
      */
     fun testVal(){
         val value :String = "complete";
+//        value = "not complete";
         println(value)
     }
 
@@ -70,18 +77,19 @@ class Function{
      */
     fun template(a: String){
         val t = "a value is $a"
-        println("template function=> " + t)
-
+        println("template function=> ".plus(t))
+        t.replace("is", "was")
         val t1 = "${t.replace("is", "was")}, but now is $a"
-        println("template function=> " + t1)
+        println("template function=> ".plus(t1))
     }
 
     /**
      * 空校验
      */
-    fun emptyValid(param:String?){
+    fun emptyValid(param:String){
         //类型后面加?表示可为空
         var age: String? = "23"
+
         //抛出空指针异常
         val ages = param!!.toInt()
         println("empty valid ages=> " + ages)
@@ -89,11 +97,24 @@ class Function{
         //不做处理返回 null
         val ages1 = age?.toInt()
         println("empty valid ages1=> " + ages1)
+        println("empty valid isNullOrEmpty=> " + age.isNullOrEmpty())
+        println("empty valid isNullOrBlank=> " + age.isNullOrBlank())
+
 
         age = null
         //age为空返回-1
-        val ages2 = age?.toInt() ?: -1
+        val ages2:Int = age?.toInt()  ?:  -1
         println("empty valid ages2=> " + ages2)
+
+
+        val a = with("string") {
+            println(this)
+            3
+        }
+        println(a)
+
+        var age7:String? = "12"
+        var intage = age7?.toInt() ?: 12
     }
 
     /**
@@ -136,4 +157,47 @@ class Function{
 
         }
     }
+
+    fun maxOf(a: Int, b: Int) = if (a > b) {
+        println("a > b")
+        a
+    }  else {
+        println("a < b")
+        b
+    }
+
+
+}
+
+fun main(args: Array<String>){
+    println("main1")
+    val function = Function()
+    println("a ${function.maxOf(1, 2)} ")
+    val map:MutableMap<String, String> = mutableMapOf()
+
+    map["1"] = "a"
+    map["2"] = "b"
+    map.put("c", "c")
+    for (en in map){
+        println("key ${en.key} and value is ${en.value}")
+    }
+
+    val lambda : (Int, Int)->Int = {
+        x, y-> var total = x +y
+        total *= 3
+        total + 1
+    }
+    println("lambda ${lambda(1,2)}")
+
+    println("sum function=> 3 + 5 = " + function.sum(3, 5))
+    println("sum plus function=> 3 + 6 = " + function.sumPlus(3, 6))
+    function.printSum(4, 5)
+    function.varTest(1,2,3,4,56,7)
+    function.testLambda()
+    function.testVar()
+    function.template("kotlin")
+    function.emptyValid("27")
+    println("type function=> "+ function.getStringLength("mark"))
+    function.testRange()
+    function.testLambdaPlus()
 }

@@ -4,80 +4,42 @@ import com.annarm.kotlin.base.DataType
 import com.annarm.kotlin.base.Function
 import com.annarm.kotlin.cycle.Cycle
 import com.annarm.kotlin.entity.Person
-import java.util.concurrent.locks.Condition
+import com.annarm.kotlin.entity.Teacher
+import com.annarm.kotlin.generic.boxIn
 
 fun main(args: Array<String>) {
-//    testBaseFunction()
-//    testDataType()
-//    testCondition()
-//    testCycle()
-    testEntity();
-//    testObject()
+    val testFunImport = boxIn(100)
+    println(testFunImport.value)
+
+    testObject()
 }
-
-/**
- * 测试基本用法
- */
-fun testBaseFunction() {
-    val f = Function()
-    println("sum function=> 3 + 5 = " + f.sum(3, 5))
-    println("sum plus function=> 3 + 6 = " + f.sumPlus(3, 6))
-    f.printSum(4, 5)
-    f.varTest(1,2,3,4,56,7)
-    f.testLambda()
-    f.testVar()
-    f.template("kotlin")
-    f.emptyValid("27")
-    println("type function=> "+ f.getStringLength("mark"))
-    f.testRange()
-}
-
-fun testDataType(){
-    val dataType = DataType()
-    dataType.compare()
-    dataType.testArray()
-    dataType.testString("kotlin")
-    dataType.testTemplate()
-}
-
-fun testCondition(){
-    val condition = com.annarm.kotlin.condition.Condition()
-    condition.common()
-    condition.assignment()
-    condition.testWhen()
-    println("hasPrefix by 1 " + condition.hasPrefix("1"))
-    println("hasPrefix by prefix " + condition.hasPrefix("prefix"))
-}
-
-fun testCycle(){
-    val cycle = Cycle()
-    cycle.common()
-    cycle.testOver()
-    cycle.testReturn()
-}
-
-fun testEntity(){
-    val person = Person("David")
-    person.address = "sh=y"
-    println(person.address)
-    person.sex = 5
-    println(person.sex)
-    person.age = 166
-    println(person.age)
-
-    val personLi = Person("Li", 30)
-    println(personLi.age)
-
-}
-
 
 fun testObject(){
     val site = object {
         val name = "baidu"
         val url = "http://www.baidu.com"
+        fun printDetail(){
+            println("${this} name is $name, url is $url")
+        }
     }
     println(site.name)
     println(site.url)
+    //com.annarm.kotlin.MainKt$testObject$site$1@7440e464
+    site.printDetail()
+
+    //class object 可以随意在文件中定义，完整包名跟路径名一致
+    SiteObject.printDetail()
+    val c = C()
+    println(c)
+    c.bar()
+}
+
+object SiteObject{
+    private const val name = "baidu"
+    private const val url = "http://www.baidu.com"
+    fun printDetail(){
+        println("${this} name is $name, url is $url")
+    }
 }
 
 fun testA(){
@@ -96,6 +58,8 @@ class C {
     }
 
     fun bar() {
+        val obj = foo()
+        println(obj)
         val x1 = foo().x        // 没问题
 //        val x2 = publicFoo().x  // 错误：未能解析的引用“x”
     }

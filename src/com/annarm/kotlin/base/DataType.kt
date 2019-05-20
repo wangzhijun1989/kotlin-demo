@@ -38,14 +38,17 @@ class DataType{
      * 数组
      */
     fun testArray(){
-        val a = arrayOf(1,2,3,4)
+        println("============testArray start=============")
+        val a = arrayOf(1,2,"33k",4)
         println(a.size)
         println(a[2])
-        val b = Array(5, {i -> (i*3) })
+        val b = Array(5) { i -> (i*3) }
         for (i in b) {
             println(i)
         }
         val x = intArrayOf(1,2,3)
+        println("============testArray end===============")
+
     }
 
     /**
@@ -82,4 +85,14 @@ class DataType{
     """
         println(price)  // 求值结果为 $9.99
     }
+}
+
+fun main(args: Array<String>) {
+    val dataType = DataType()
+    dataType.compare()
+    dataType.conversion()
+    dataType.testArray()
+    dataType.testChar('k')
+    dataType.testString("hello")
+    dataType.testTemplate()
 }

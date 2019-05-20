@@ -56,4 +56,5 @@ fun main(arg:Array<String>){
     val c: C = C()
     val d: D = D()
     c.caller(d)
+    d.bar()
 }

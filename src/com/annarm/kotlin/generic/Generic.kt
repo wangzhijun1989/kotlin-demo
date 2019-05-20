@@ -1,13 +1,16 @@
 package com.annarm.kotlin.generic
 
+/**
+ * 泛型
+ */
 class Item{
     fun job(){
         print("JOB")
     }
 }
 
-class Box<T>(t:T){
-    var value = t
+class Box<T>(val value:T){
+//    var value = t
 }
 
 // 定义一个支持协变的类
@@ -17,8 +20,9 @@ class RunoobOut<out A>(val a: A) {
     }
 }
 // 定义一个支持逆变的类
-class RunoobIn<in A>(a: A) {
+class RunoobIn<in A> {
     fun foo(a: A) {
+        println(a)
     }
 }
 
@@ -36,11 +40,20 @@ fun main(args: Array<String>) {
     println(box3.value)
     println(box4.value)
 
-    var strCo: RunoobOut<String> = RunoobOut("a")
+    println("============协变开始============")
+    val strCo: RunoobOut<String> = RunoobOut("producer")
     var anyCo: RunoobOut<Any> = RunoobOut<Any>("b")
     anyCo = strCo
+//    strCo = anyCo
     println(anyCo.foo())   // 输出 a
-    println("========================")
+    println("============协变结束============\n")
+    println("============逆变开始============")
+    var strInCo:RunoobIn<String> = RunoobIn<String>()
+    val anyInCo:RunoobIn<Any> = RunoobIn<Any>()
+    strInCo = anyInCo
+    strInCo.foo(Any())
+    println("============逆变结束============\n")
+
 
     val a1: A<*> = A(12, "String", Apple("苹果"))
     val a2: A<Any?> = A(12, "String", Apple("苹果"))   //和a1是一样的
@@ -53,7 +66,9 @@ fun main(args: Array<String>) {
     for (item in l){
         println(item)
     }
+
 }
 
 fun <T> boxIn(value: T) = Box(value)
+
 

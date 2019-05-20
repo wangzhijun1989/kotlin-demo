@@ -10,10 +10,11 @@ class Cycle{
         for (i in arr){
             print(i)
         }
+        println()
         for (i in arr.indices){
             print(arr[i])
         }
-
+        println()
         for ((index, value) in arr.withIndex()) {
             println("the element at $index is $value")
         }
@@ -40,6 +41,7 @@ class Cycle{
         }
 
         println("======")
+
         loop@ for (i in 1..10) {
             println("i = $i")
             for (j in 1..10) {
@@ -60,20 +62,22 @@ class Cycle{
 //            }
 //        }
 
-        arr.forEach lit@ {
+        println("===============")
+        arr.forEach litCustom@ {
             if (it == "b"){
                 println("bbb")
-                return@lit
+                return@litCustom
             }
             println(it)
         }
 
-        println("===============")
+        println("=======隐士标签========")
         arr.forEach {
             if (it == "b") return@forEach
             println(it)
         }
-        println("===============")
+
+        println("=======匿名函数========")
         arr.forEach(fun(value: String) {
             if (value == "c") return
             println(value)
@@ -82,4 +86,11 @@ class Cycle{
         println("testReturn function end")
     }
 
+}
+
+fun main(args: Array<String>) {
+    val cycle = Cycle()
+    cycle.common()
+    cycle.testOver()
+    cycle.testReturn()
 }

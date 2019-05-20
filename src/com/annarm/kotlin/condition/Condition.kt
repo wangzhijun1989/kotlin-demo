@@ -40,13 +40,14 @@ class Condition{
     }
 
     fun testWhen(){
+        println("=== test when start ===")
         val x = 1
         val value = when{
             x == 1 -> {
                 println("x == 1")
                 1 * 10
             }
-            x == 2 -> print("x == 2")
+            x == 2 -> println("x == 2")
             else ->{
                 println("x 不是 1 ，也不是 2")
             }
@@ -80,10 +81,20 @@ class Condition{
             "orange" in items -> println("juicy")
             "apple" in items -> println("apple is fine too")
         }
+        println("=== test when end ===")
     }
 
     fun hasPrefix(x: Any) = when(x) {
         is String -> x.startsWith("prefix")
         else -> false
     }
+}
+
+fun main(args: Array<String>) {
+    val condition = Condition()
+    condition.assignment()
+    condition.common()
+    condition.testWhen()
+    println("hasPrefix by 1 " + condition.hasPrefix("1"))
+    println("hasPrefix by prefix " + condition.hasPrefix("prefix"))
 }
